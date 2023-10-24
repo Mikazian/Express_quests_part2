@@ -29,7 +29,11 @@ const getUsers = (req, res) => {
       where.map(({ value }) => value)
     )
     .then(([users]) => {
-      res.json(users);
+      const usersWithoutPassword = users.map((user) => {
+        const { hashedPassword, ...userWithoutPassword } = user;
+        return userWithoutPassword;
+      });
+      res.json(usersWithoutPassword);
     })
     .catch((err) => {
       console.error(err);
@@ -44,7 +48,8 @@ const getUserById = (req, res) => {
     .query("select * from users where id = ?", [id])
     .then(([users]) => {
       if (users[0] != null) {
-        res.json(users[0]);
+        const { hashedPassword, ...userWithoutPassword } = users[0];
+        res.json(userWithoutPassword);
       } else {
         res.status(404).send("Not Found");
       }
