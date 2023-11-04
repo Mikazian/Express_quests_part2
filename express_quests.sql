@@ -1,3 +1,5 @@
+CREATE DATABASE express_quests;
+
 USE express_quests;
 
 DROP TABLE users;
@@ -64,4 +66,60 @@ VALUES (
         'Milan',
         'Spanish',
         '$argon2id$v=19$m=16,t=2,p=1$emVmemVmemVmemZlenplZHpkZGZ6ZnpmZXphZGF6ZGQ$UKaGZ9hGFn/S5SBQDMe/Uw'
+    );
+
+CREATE TABLE
+    movies (
+        id int primary key NOT NULL AUTO_INCREMENT,
+        title varchar(255) NOT NULL,
+        director varchar(255) NOT NULL,
+        year varchar(255) NOT NULL,
+        color varchar(255) NOT NULL,
+        duration int NOT NULL
+    ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb3;
+
+INSERT INTO
+    movies (
+        title,
+        director,
+        year,
+        color,
+        duration
+    )
+VALUES (
+        'Citizen Kane',
+        'Orson Wells',
+        '1941',
+        '0',
+        120
+    ), (
+        'The Godfather',
+        'Francis Ford Coppola',
+        '1972',
+        '1',
+        180
+    ), (
+        'Pulp Fiction',
+        'Quentin Tarantino',
+        '1994',
+        '1',
+        180
+    ), (
+        'Apocalypse Now',
+        'Francis Ford Coppola',
+        '1979',
+        '1',
+        150
+    ), (
+        '2001 a space odyssey',
+        'Stanley Kubrick',
+        '1968',
+        '1',
+        160
+    ), (
+        'The Dark Knight',
+        'Christopher Nolan',
+        '2008',
+        '1',
+        150
     );
